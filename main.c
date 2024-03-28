@@ -6,8 +6,8 @@ var_gl_t vl;
 
 /**
  * main - entry point
- * @argc: counter of args
- * @argv: number of value
+ * @ac: counter of args
+ * @av: number of value
  *
  * Return: (0)
 */
