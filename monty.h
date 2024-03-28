@@ -26,6 +26,21 @@ typedef struct stack_s
 	struct stack_s *next;
 } stack_t;
 
+
+/**
+ * struct instruction_s - opcode and its function
+ * @opcode: the opcode
+ * @f: function to handle the opcode
+ *
+ * Description: opcode and its function
+ * for stack, queues, LIFO, FIFO Holberton project
+ */
+typedef struct instruction_s
+{
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
+} instruction_t;
+
 /**
  * struct globals - struct global to share in functions within files
  * @arg: second tokenizer number inside line
@@ -43,19 +58,6 @@ typedef struct var_gl
 	FILE *fd;
 } var_gl_t;
 
-/**
- * struct instruction_s - opcode and its function
- * @opcode: the opcode
- * @f: function to handle the opcode
- *
- * Description: opcode and its function
- * for stack, queues, LIFO, FIFO Holberton project
- */
-typedef struct instruction_s
-{
-	char *opcode;
-	void (*f)(stack_t **stack, unsigned int line_number);
-} instruction_t;
 
 extern var_gl_t vl;
 
@@ -65,9 +67,7 @@ void func_pint(stack_t **head, unsigned int line_number);
 void func_pop(stack_t **head, unsigned int line_number);
 void func_swap(stack_t **head, unsigned int line_number);
 void func_nop(stack_t **head, unsigned int line_number);
-/*
 void func_add(stack_t **head, unsigned int line_number);
-*/
 
 /*get function*/
 void (*func_opc(char *opfn))(stack_t **stack, unsigned int line_number);

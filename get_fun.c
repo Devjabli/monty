@@ -8,7 +8,6 @@
  * Return: function pointer
  */
 
-
 void (*func_opc(char *opfn))(stack_t **stack, unsigned int line_number)
 {
 	instruction_t instruct[] = {
@@ -17,6 +16,7 @@ void (*func_opc(char *opfn))(stack_t **stack, unsigned int line_number)
 		{"pint", func_pint},
 		{"pop", func_pop},
 		{"swap", func_swap},
+		{"add", func_add},
 		{"nop", func_nop},
 		{NULL, NULL}};
 	int i = 0;
@@ -27,7 +27,6 @@ void (*func_opc(char *opfn))(stack_t **stack, unsigned int line_number)
 			break;
 		i++;
 	}
-
 	return (instruct[i].f);
 }
 
@@ -37,10 +36,39 @@ void (*func_opc(char *opfn))(stack_t **stack, unsigned int line_number)
  * @line_number: line number
  *
  * Return: return nothing
-*/
+ */
 
 void func_nop(stack_t **head, unsigned int line_number)
 {
 	(void)head;
 	(void)line_number;
+}
+
+/**
+ * func_add - adding two element on the top of the stack
+ *
+ * @head: pointer head of the linked list
+ * @line_number: line number;
+ * Return: no return
+ */
+
+void func_add(stack_t **head, unsigned int line_number)
+{
+	stack_t *current;
+
+	if (*head == NULL || (*head)->next == NULL)
+	{
+		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
+		free_dlistint(vl.head);
+		free(vl.buffer);
+		fclose(vl.fd);
+		exit(EXIT_FAILURE);
+	}
+
+	current = (*head)->next;
+	current->n += (*head)->n;
+	*head = current;
+
+	free((*head)->prev);
+	(*head)->prev = NULL;
 }
