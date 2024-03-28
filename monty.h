@@ -64,13 +64,13 @@ void func_pall(stack_t **head, unsigned int line_number);
 void func_pint(stack_t **head, unsigned int line_number);
 void func_pop(stack_t **head, unsigned int line_number);
 void func_swap(stack_t **head, unsigned int line_number);
+void func_nop(stack_t **head, unsigned int line_number);
 /*
 void _add(stack_t **doubly, unsigned int cline);
-void _nop(stack_t **doubly, unsigned int cline);
 */
 
 /*get function*/
-void (*func_opc(char *opc))(stack_t **stack, unsigned int line_number);
+void (*func_opc(char *opfn))(stack_t **stack, unsigned int line_number);
 
 
 stack_t *add_dnodeint(stack_t **head, const int n);
