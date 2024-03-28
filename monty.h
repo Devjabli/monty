@@ -66,7 +66,7 @@ void func_pop(stack_t **head, unsigned int line_number);
 void func_swap(stack_t **head, unsigned int line_number);
 void func_nop(stack_t **head, unsigned int line_number);
 /*
-void _add(stack_t **doubly, unsigned int cline);
+void func_add(stack_t **head, unsigned int line_number);
 */
 
 /*get function*/
