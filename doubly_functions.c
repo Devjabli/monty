@@ -15,7 +15,7 @@ stack_t *add_dnodeint(stack_t **head, const int n)
 	temp = malloc(sizeof(stack_t));
 	if (!temp)
 	{
-		dprintf(2, "Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		free_dlistint(vl.head);
 		free(vl.buffer);
 		fclose(vl.fd);

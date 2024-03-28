@@ -124,7 +124,7 @@ void func_swap(stack_t **head, unsigned int cline)
 
 	if (m < 2)
 	{
-		dprintf(2, "L%u: can't swap, stack too short\n", cline);
+		fprintf(stderr, "L%u: can't swap, stack too short\n", cline);
 		free_dlistint(vl.head);
 		free(vl.buffer);
 		fclose(vl.fd);

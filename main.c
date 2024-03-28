@@ -1,4 +1,6 @@
+#define  _POSIX_C_SOURCE 200809L
 #include "monty.h"
+
 
 var_gl_t vl;
 
@@ -14,7 +16,7 @@ int main(int argc, char *argv[])
 {
 	FILE *fd;
 	size_t size = sizeof(fd);
-
+	
 	if (argc == 1 || argc > 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
@@ -33,7 +35,7 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-
+	
 	while (getline(&vl.buffer, &size, fd) != -1)
 	{
 		tokenizer();

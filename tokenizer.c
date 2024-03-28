@@ -2,10 +2,10 @@
 
 /**
  * tokenizer - function tokenizing lines and return opcode and args
- * Return: Void
-*/
+ * Return: (0);
+ */
 
-void *tokenizer()
+int tokenizer(void)
 {
 	void (*f)(stack_t **stack, unsigned int line_number);
 	char *str[2];
@@ -26,4 +26,5 @@ void *tokenizer()
 		vl.arg = strtok(NULL, " \t\n");
 		f(&vl.head, vl.current_line);
 	}
+	return (0);
 }
