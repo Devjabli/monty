@@ -10,7 +10,7 @@
 
 void (*func_opc(char *opfn))(stack_t **stack, unsigned int line_number)
 {
-	instruction_t instruct[] = {
+	instruction_t instruct_op[] = {
 		{"push", func_push},
 		{"pall", func_pall},
 		{"pint", func_pint},
@@ -19,15 +19,23 @@ void (*func_opc(char *opfn))(stack_t **stack, unsigned int line_number)
 		{"add", func_add},
 		{"nop", func_nop},
 		{NULL, NULL}};
-	int i = 0;
 
-	while (instruct[i].opcode)
+	int i = 0;
+	int found = 0;
+
+	while (instruct_op[i].opcode && !found)
 	{
-		if (strcmp(instruct[i].opcode, opfn) == 0)
+		switch (strcmp(instruct_op[i].opcode, opfn))
+		{
+		case 0:
+			found = 1;
 			break;
-		i++;
+		default:
+			i++;
+			break;
+		}
 	}
-	return (instruct[i].f);
+	return (found ? instruct_op[i].f : NULL);
 }
 
 /**

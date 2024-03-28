@@ -9,7 +9,7 @@
  */
 void func_push(stack_t **head, unsigned int line_number)
 {
-	int n, j;
+	int n, i = 0;
 
 	if (!vl.arg)
 	{
@@ -21,9 +21,9 @@ void func_push(stack_t **head, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	for (j = 0; vl.arg[j] != '\0'; j++)
+	while (vl.arg[i] != '\0')
 	{
-		if (!isdigit(vl.arg[j]) && vl.arg[j] != '-')
+		if (!isdigit(vl.arg[i]) && vl.arg[i] != '-')
 		{
 			fprintf(stderr, "L%u: ", line_number);
 			fprintf(stderr, "usage: push integer\n");
@@ -32,6 +32,7 @@ void func_push(stack_t **head, unsigned int line_number)
 			fclose(vl.fd);
 			exit(EXIT_FAILURE);
 		}
+		i++;
 	}
 
 	n = atoi(vl.arg);
@@ -114,15 +115,18 @@ void func_pop(stack_t **head, unsigned int line_number)
  */
 void func_swap(stack_t **head, unsigned int cline)
 {
-	int m = 0;
+	int i = 0;
 	stack_t *current = NULL;
 
 	current = *head;
 
-	for (; current != NULL; current = current->next, m++)
-		;
+	while (current != NULL)
+	{
+		current = current->next;
+		i++;
+	}
 
-	if (m < 2)
+	if (i < 2)
 	{
 		fprintf(stderr, "L%u: can't swap, stack too short\n", cline);
 		free_dlistint(vl.head);
