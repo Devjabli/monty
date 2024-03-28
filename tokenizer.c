@@ -5,7 +5,7 @@
  * Return: Void
 */
 
-void *tokenizer(void)
+void *tokenizer()
 {
 	void (*f)(stack_t **stack, unsigned int line_number);
 	char *str[2];
