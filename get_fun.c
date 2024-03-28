@@ -3,7 +3,7 @@
 /**
  * func_opc - choose the right one for excute
  *
- * @opc: opcode func
+ * @opfn: opcode func
  *
  * Return: function pointer
  */
@@ -30,6 +30,14 @@ void (*func_opc(char *opfn))(stack_t **stack, unsigned int line_number)
 
 	return (instruct[i].f);
 }
+
+/**
+ * func_nop - return nothing
+ * @head: head of the linked list
+ * @line_number: line number
+ *
+ * Return: return nothing
+*/
 
 void func_nop(stack_t **head, unsigned int line_number)
 {
