@@ -19,7 +19,6 @@ int tokenizer(void)
 			fprintf(stderr, "L%u: ", vl.current_line);
 			fprintf(stderr, "unknown instruction %s\n", str[0]);
 			free_dlistint(vl.head);
-			free(vl.buffer);
 			fclose(vl.fd);
 			exit(EXIT_FAILURE);
 		}
