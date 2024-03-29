@@ -19,6 +19,7 @@ void (*func_opc(char *opfn))(stack_t **stack, unsigned int line_number)
 		{"add", func_add},
 		{"nop", func_nop},
 		{"sub", func_sub},
+		{"div", func_div},
 		{NULL, NULL}
 	};
 
@@ -105,6 +106,34 @@ void func_sub(stack_t **head, unsigned int line_number)
 
 	current = (*head)->next;
 	current->n -= (*head)->n;
+	*head = current;
+
+	free((*head)->prev);
+	(*head)->prev = NULL;
+}
+
+/**
+ * func_div - divading two element on the top of the stack
+ *
+ * @head: pointer head of the linked list
+ * @line_number: line number;
+ * Return: no return
+ */
+
+void func_div(stack_t **head, unsigned int line_number)
+{
+	stack_t *current;
+
+	if (*head == NULL || (*head)->next == NULL)
+	{
+		fprintf(stderr, "L%u: can't div, stack too short\n", line_number);
+		free_dlistint(vl.head);
+		fclose(vl.fd);
+		exit(EXIT_FAILURE);
+	}
+
+	current = (*head)->next;
+	current->n /= (*head)->n;
 	*head = current;
 
 	free((*head)->prev);
