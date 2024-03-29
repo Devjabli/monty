@@ -48,10 +48,8 @@ void func_mul(stack_t **head, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	current = (*head)->next;
 	current->next->n *= (*head)->n;
-	*head = current;
-
+	current = (*head)->next;
 	free((*head)->prev);
 	(*head)->prev = NULL;
 }
