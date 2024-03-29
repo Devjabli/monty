@@ -20,8 +20,7 @@ void (*func_opc(char *opfn))(stack_t **stack, unsigned int line_number)
 		{"nop", func_nop},
 		{"sub", func_sub},
 		{"div", func_div},
-		{NULL, NULL}
-	};
+		{NULL, NULL}};
 
 	int i = 0;
 	int found = 0;
@@ -53,7 +52,6 @@ void func_nop(stack_t **head, unsigned int line_number)
 {
 	(void)head;
 	(void)line_number;
-
 }
 
 /**
@@ -122,8 +120,7 @@ void func_sub(stack_t **head, unsigned int line_number)
 
 void func_div(stack_t **head, unsigned int line_number)
 {
-	stack_t *current;
-	current = NULL;
+	stack_t *current = NULL;
 
 	if (*head == NULL || (*head)->next == NULL)
 	{
@@ -132,8 +129,11 @@ void func_div(stack_t **head, unsigned int line_number)
 		fclose(vl.fd);
 		exit(EXIT_FAILURE);
 	}
-	if (current->n == 0)
+	if (current->n == 0 || current->next->n == 0)
+	{
 		fprintf(stderr, "L%u: division by zero\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 
 	current = (*head)->next;
 	current->n /= (*head)->n;
