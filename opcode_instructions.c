@@ -9,7 +9,7 @@
  */
 void func_push(stack_t **head, unsigned int line_number)
 {
-	int n, i = 0;
+	int i = 0;
 
 	if (!vl.arg)
 	{
@@ -34,9 +34,7 @@ void func_push(stack_t **head, unsigned int line_number)
 		}
 		i++;
 	}
-
-	n = atoi(vl.arg);
-	add_dnodeint(head, n);
+	add_dnodeint(head, atoi(vl.arg));
 }
 
 /**
