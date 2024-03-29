@@ -18,7 +18,9 @@ void (*func_opc(char *opfn))(stack_t **stack, unsigned int line_number)
 		{"swap", func_swap},
 		{"add", func_add},
 		{"nop", func_nop},
-		{NULL, NULL}};
+		{"sub", func_sub},
+		{NULL, NULL}
+	};
 
 	int i = 0;
 	int found = 0;
@@ -75,6 +77,34 @@ void func_add(stack_t **head, unsigned int line_number)
 
 	current = (*head)->next;
 	current->n += (*head)->n;
+	*head = current;
+
+	free((*head)->prev);
+	(*head)->prev = NULL;
+}
+
+/**
+ * func_sub - subing two element on the top of the stack
+ *
+ * @head: pointer head of the linked list
+ * @line_number: line number;
+ * Return: no return
+ */
+
+void func_sub(stack_t **head, unsigned int line_number)
+{
+	stack_t *current;
+
+	if (*head == NULL || (*head)->next == NULL)
+	{
+		fprintf(stderr, "L%u: can't sub, stack too short\n", line_number);
+		free_dlistint(vl.head);
+		fclose(vl.fd);
+		exit(EXIT_FAILURE);
+	}
+
+	current = (*head)->next;
+	current->n -= (*head)->n;
 	*head = current;
 
 	free((*head)->prev);
