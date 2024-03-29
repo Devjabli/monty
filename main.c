@@ -15,7 +15,7 @@ var_gl_t vl;
 int main(int ac, char *av[])
 {
 	FILE *fd;
-	size_t size = sizeof(fd);
+	size_t size = 256;
 
 	if (ac == 1 || ac > 2)
 	{
