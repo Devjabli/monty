@@ -8,7 +8,7 @@
  */
 stack_t *add_dnodeint(stack_t **head, const int n)
 {
-	stack_t *temp = NULL;
+	stack_t *temp;
 
 	if (head == NULL)
 		return (NULL);
@@ -48,7 +48,7 @@ stack_t *add_dnodeint(stack_t **head, const int n)
  */
 void free_dlistint(stack_t *head)
 {
-	stack_t *current = NULL;
+	stack_t *current;
 
 	while ((current = head) != NULL)
 	{
