@@ -70,6 +70,7 @@ void func_nop(stack_t **head, unsigned int line_number);
 void func_add(stack_t **head, unsigned int line_number);
 void func_sub(stack_t **head, unsigned int line_number);
 void func_div(stack_t **head, unsigned int line_number);
+void func_mul(stack_t **head, unsigned int line_number);
 
 /*get function*/
 void (*func_opc(char *opfn))(stack_t **stack, unsigned int line_number);

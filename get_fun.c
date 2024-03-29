@@ -20,6 +20,7 @@ void (*func_opc(char *opfn))(stack_t **stack, unsigned int line_number)
 		{"nop", func_nop},
 		{"sub", func_sub},
 		{"div", func_div},
+		{"mul", func_mul},
 		{NULL, NULL}};
 
 	int i = 0;

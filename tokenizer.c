@@ -26,3 +26,32 @@ int tokenizer(void)
 	}
 	return (0);
 }
+
+
+/**
+ * func_mul - multiplying two element on the top of the stack
+ *
+ * @head: pointer head of the linked list
+ * @line_number: line number;
+ * Return: no return
+ */
+
+void func_mul(stack_t **head, unsigned int line_number)
+{
+	stack_t *current;
+
+	if (*head == NULL || (*head)->next == NULL)
+	{
+		fprintf(stderr, "L%u: can't mul, stack too short\n", line_number);
+		free_dlistint(vl.head);
+		fclose(vl.fd);
+		exit(EXIT_FAILURE);
+	}
+
+	current = (*head)->next;
+	current->next->n *= (*head)->n;
+	*head = current;
+
+	free((*head)->prev);
+	(*head)->prev = NULL;
+}
