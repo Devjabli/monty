@@ -65,7 +65,7 @@ void func_nop(stack_t **head, unsigned int line_number)
 
 void func_add(stack_t **head, unsigned int line_number)
 {
-	stack_t *current;
+	stack_t *current = NULL;
 
 	if (*head == NULL || (*head)->next == NULL)
 	{
