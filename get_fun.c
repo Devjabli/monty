@@ -123,6 +123,7 @@ void func_sub(stack_t **head, unsigned int line_number)
 void func_div(stack_t **head, unsigned int line_number)
 {
 	stack_t *current;
+	current = NULL;
 
 	if (*head == NULL || (*head)->next == NULL)
 	{
@@ -131,6 +132,8 @@ void func_div(stack_t **head, unsigned int line_number)
 		fclose(vl.fd);
 		exit(EXIT_FAILURE);
 	}
+	if (current->n == 0)
+		fprintf(stderr, "L%u: division by zero\n", line_number);
 
 	current = (*head)->next;
 	current->n /= (*head)->n;
