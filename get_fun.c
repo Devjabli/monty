@@ -129,7 +129,7 @@ void func_div(stack_t **head, unsigned int line_number)
 		fclose(vl.fd);
 		exit(EXIT_FAILURE);
 	}
-	if (current->n == 0 || current->next->n == 0)
+	if (current->n == 0)
 	{
 		fprintf(stderr, "L%u: division by zero\n", line_number);
 		exit(EXIT_FAILURE);
