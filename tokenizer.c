@@ -8,7 +8,7 @@
 int tokenizer(void)
 {
 	void (*f)(stack_t **stack, unsigned int line_number);
-	char *str[2] = {NULL, NULL};
+	char *str[2];
 
 	str[0] = strtok(vl.buffer, " \t\n");
 	if (str[0] && str[0][0] != '#')
