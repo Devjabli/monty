@@ -76,5 +76,6 @@ void func_add(stack_t **head, unsigned int line_number)
 	current->n += (*head)->n;
 	*head = current;
 
+	free((*head)->prev);
 	(*head)->prev = NULL;
 }
