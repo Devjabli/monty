@@ -43,8 +43,6 @@ void func_mul(stack_t **head, unsigned int line_number)
 	if (*head == NULL || (*head)->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't mul, stack too short\n", line_number);
-		free_dlistint(vl.head);
-		fclose(vl.fd);
 		exit(EXIT_FAILURE);
 	}
 
