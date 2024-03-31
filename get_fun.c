@@ -124,6 +124,9 @@ void func_div(stack_t **head, unsigned int line_number)
 	if (*head == NULL || (*head)->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't div, stack too short\n", line_number);
+		free_dlistint(vl.head);
+		free(vl.buffer);
+		fclose(vl.fd);
 		exit(EXIT_FAILURE);
 	}
 	if (current->n == 0)
@@ -134,7 +137,7 @@ void func_div(stack_t **head, unsigned int line_number)
 
 	current = (*head)->next;
 	current->n /= (*head)->n;
-	
+
 	free(*head);
 
 	*head = current;
