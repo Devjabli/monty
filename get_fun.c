@@ -76,7 +76,7 @@ void func_add(stack_t **head, unsigned int line_number)
 
 	current = (*head)->next;
 	current->n += (*head)->n;
-	
+
 	free(*head);
 
 	*head = current;
@@ -105,9 +105,10 @@ void func_sub(stack_t **head, unsigned int line_number)
 
 	current = (*head)->next;
 	current->n -= (*head)->n;
-	*head = current;
+	
+	free(*head);
 
-	free((*head)->prev);
+	*head = current;
 	(*head)->prev = NULL;
 }
 
