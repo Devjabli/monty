@@ -43,7 +43,6 @@ int main(int ac, char *av[])
 	}
 	free_dlistint(vl.head);
 	free(vl.buffer);
-	vl.buffer = NULL;
 	fclose(vl.fd);
 	return (0);
 }

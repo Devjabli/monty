@@ -65,7 +65,8 @@ void func_nop(stack_t **head, unsigned int line_number)
 
 void func_add(stack_t **head, unsigned int line_number)
 {
-	stack_t *current = NULL;
+	stack_t *current = malloc(sizeof(stack_t));
+	current = NULL;
 
 	if (*head == NULL || (*head)->next == NULL)
 	{
