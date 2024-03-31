@@ -65,22 +65,21 @@ void func_nop(stack_t **head, unsigned int line_number)
 
 void func_add(stack_t **head, unsigned int line_number)
 {
-	stack_t *current = NULL;
+	stack_t *current;
 
 	if (*head == NULL || (*head)->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
-		free_dlistint(vl.head);
-		free(vl.buffer);
 		fclose(vl.fd);
 		exit(EXIT_FAILURE);
 	}
 
 	current = (*head)->next;
 	current->n += (*head)->n;
-	*head = current;
+	
+	free(*head);
 
-	free((*head)->prev);
+	*head = current;
 	(*head)->prev = NULL;
 }
 
