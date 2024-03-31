@@ -47,7 +47,7 @@ void func_mul(stack_t **head, unsigned int line_number)
 	}
 
 	current = (*head)->next;
-	current->next->n *= (*head)->n;
+	current->n *= (*head)->n;
 
 	free(*head);
 
